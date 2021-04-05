@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Consider the root of Meshroom to be up one directory from where this script is
+export MESHROOM_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
+
+# Alicevision should be installed in aliceVision as a peer to MESHROOM_ROOT
+export ALICEVISION_ROOT=$MESHROOM_ROOT/aliceVision
+export PATH=$PATH:$ALICEVISION_ROOT/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ALICEVISION_ROOT/lib
+
+PYTHONPATH=$MESHROOM_ROOT python3 $MESHROOM_ROOT/meshroom/ui

@@ -4,8 +4,11 @@
 export MESHROOM_ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )"/.. && pwd )"
 
 # Alicevision should be installed in aliceVision as a peer to MESHROOM_ROOT
-export ALICEVISION_ROOT=$MESHROOM_ROOT/aliceVision
-export PATH=$PATH:$ALICEVISION_ROOT/bin
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ALICEVISION_ROOT/lib
+export ALICEVISION_ROOT=$MESHROOM_ROOT/../aliceVision
+export PATH=$ALICEVISION_ROOT/bin:$PATH
+export LD_LIBRARY_PATH=$ALICEVISION_ROOT/lib:$LD_LIBRARY_PATH
+export ALICEVISION_SENSOR_DB=$ALICEVISION_ROOT/share/aliceVision/cameraSensors.db
+export ALICEVISION_VOCTREE=$ALICEVISION_ROOT/share/voctree/vlfeat_K80L3.SIFT.tree
 
+. $MESHROOM_ROOT/venv/bin/activate
 PYTHONPATH=$MESHROOM_ROOT python3 $MESHROOM_ROOT/meshroom/ui
